@@ -9,7 +9,7 @@ Path.ls = lambda x: list(x.iterdir())
 
 # Argument parsing
 parser = argparse.ArgumentParser(
-    description="""Preprocess data from the Longitudinal MS Lesion Segmentation Challenge of MICCAI 2021 with the anima library. 
+    description="""Preprocess data for the Longitudinal MS Lesion Segmentation Challenge of MICCAI 2021 with the anima library. 
                     The preprocessing consists in a brain extraction followed by a bias field correction.""")
 
 parser.add_argument('-i', '--input', type=str, required=True, help='Input folder containing the patients to preprocess (for example segmentation_challenge_miccai21/training/).')

@@ -1,0 +1,23 @@
+Bootstrap: docker
+From: python:slim-buster
+
+%files
+    config.txt /root/.anima/
+    preprocess.py /anima/
+    animaAtlasBasedBrainExtraction.py /anima/
+
+%post
+    apt-get update -y
+    apt-get install -y --no-install-recommends apt-utils ca-certificates wget unzip git git-lfs
+    update-ca-certificates
+    cd /anima/
+    wget -q https://github.com/Inria-Visages/Anima-Public/releases/download/v4.0.1/Anima-Ubuntu-4.0.1.zip
+    unzip Anima-Ubuntu-4.0.1.zip
+    git lfs install
+    git clone --depth 1 https://github.com/Inria-Visages/Anima-Scripts-Public.git
+    git clone --depth 1 https://github.com/Inria-Visages/Anima-Scripts-Data-Public.git
+    cp /anima/animaAtlasBasedBrainExtraction.py /anima/Anima-Scripts-Public/brain_extraction/
+
+
+%runscript
+    python preprocess.py $@
