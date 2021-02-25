@@ -5,7 +5,7 @@ Data preprocessing for the Longitudinal Multipel Sclerosis Lesion Segmentation C
 The preprocessing consists in three steps:
  - brain extraction
  - bias correction
- - crop
+ - crop from the union of brain masks of both time points
 
 This project uses [anima](https://anima.irisa.fr/) to preprocess the data.
 
