@@ -12,11 +12,8 @@ RUN git clone --depth 1 https://github.com/Inria-Visages/Anima-Scripts-Public.gi
 RUN git clone --depth 1 https://github.com/Inria-Visages/Anima-Scripts-Data-Public.git
 RUN mkdir /root/.anima/
 
-COPY animaAtlasBasedBrainExtraction.py /anima/Anima-Scripts-Public/brain_extraction/
-
 COPY config.txt /root/.anima
-COPY preprocess.py /anima/
 
 RUN mkdir /data/
 
-ENTRYPOINT ["python", "preprocess.py"]
+ENTRYPOINT ["python", "/anima/Anima-Scripts-Public/ms_lesion_semgentation/animaLongitudinalPreprocessing.py"]

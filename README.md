@@ -1,107 +1,44 @@
-# Preprocessing - Longitudinal Multipel Sclerosis Lesion Segmentation Challenge - MICCAI21
+# MICCAI 2021 - Longitudinal Multiple Sclerosis Lesion Segmentation Challenge 
 
-Data preprocessing for the Longitudinal Multipel Sclerosis Lesion Segmentation Challenge of MICCAI 2021.
+This dataset is composed of MR neuroimaging data of 100 patients selected from the [HD Cohort](http://www.ofsep.org/en/hd-cohort) of the [French Registry on Multiple Sclerosis](http://www.ofsep.org/en/).
 
-The preprocessing consists in three steps:
- - brain extraction
- - bias correction
- - crop from the union of brain masks of both time points
+For each patient, 3D FLAIR images have been acquired at two time points, with varying interval of time between the two scans.
+Those images were then registered in the intermediate space between the two time points. First, the transformation to go from the space of the first time point to the space of the second time point was computed. Then, half of this transformation was applied on the first time point, and half of the opposite transformation was applied on the second time point. In this way, both images have similar interpolation artifacts.
 
-This project uses [anima](https://anima.irisa.fr/) to preprocess the data.
+4 experts manually segmented new Multiple Sclerosis lesions (lesions appearing on the second time point, but not the first). All lesions delineated by three of four experts were selected, and another expert reviewed the remaining lesions (those delineated by two or less experts) to validate or reject them. 
+A voxel wise majority voting was applied to create the final consensus masks. In other words, each lesion voxel is considered as part of a lesion if half or more of the concerned experts delineated the voxel. 
+For example, if a lesion was segmented by three experts, all lesion voxels delineated by two or more experts were validated as lesion voxels ; but not the ones delineated by a single expert.
+Similarly, if a lesion was segmented by two experts, all of the lesion voxels were validated as lesion voxels.
 
-## Usage
+The dataset is split in one training set and one testing set, in such way that 60% of the lesions belong to the testing set.
 
-Run `preprocess.py -i /path/to/data/raw/ -o /path/to/data/preprocessed/` either with Docker or Singularity (easier) or in a python environment (not so hard anyway).
-
-The `/path/to/data/raw/` directory corresponds to the training or the testing set of the challenge, and must follow this structure:
+The files follow this structure:
 
 ```
-/path/to/data/raw/
+/OFSEP_GT/training/
 ├── 013
-│   ├── flair_time01_on_middle_space.nii.gz
-│   ├── flair_time02_on_middle_space.nii.gz
-│   ├── ground_truth_expert1.nii.gz
-│   ├── ground_truth_expert2.nii.gz
-│   ├── ground_truth_expert3.nii.gz
-│   ├── ground_truth_expert4.nii.gz
-│   └── ground_truth.nii.gz
+│   ├── flair_time01_on_middle_space.nii.gz
+│   ├── flair_time02_on_middle_space.nii.gz
+│   ├── ground_truth_expert1.nii.gz
+│   ├── ground_truth_expert2.nii.gz
+│   ├── ground_truth_expert3.nii.gz
+│   ├── ground_truth_expert4.nii.gz
+│   └── ground_truth.nii.gz
 ├── 015
-│   ├── flair_time01_on_middle_space.nii.gz
-│   ├── flair_time02_on_middle_space.nii.gz
-│   ├── ground_truth_expert1.nii.gz
-│   ├── ground_truth_expert2.nii.gz
-│   ├── ground_truth_expert3.nii.gz
-│   ├── ground_truth_expert4.nii.gz
-│   └── ground_truth.nii.gz
+│   ├── flair_time01_on_middle_space.nii.gz
+│   ├── flair_time02_on_middle_space.nii.gz
+│   ├── ground_truth_expert1.nii.gz
+│   ├── ground_truth_expert2.nii.gz
+│   ├── ground_truth_expert3.nii.gz
+│   ├── ground_truth_expert4.nii.gz
+│   └── ground_truth.nii.gz
+├── 016
 ...
 ```
-### With Docker or Singularity
 
-Build the image:
+where:
+ - `flair_time01_on_middle_space.nii.gz` and `flair_time02_on_middle_space.nii.gz` are the 3D FLAIR images at two time points.
+ - `ground_truth_expertN.nii.gz` (where N goes from 1 to 4) are the original segmentations of each experts,
+ - and `ground_truth.nii.gz` is the consensus.
 
-`docker build -t preprocess_lmslsc21:1.0  .` (with Docker)
- or
-`sudo singularity build preprocess.sif preprocess.def` (with Singularity)
-
-Run the image:
-
-`docker run -v /path/to/data/:/data/ preprocess_lmslsc21:1.0 -i /data/raw/ -o /data/preprocessed/` (with Docker)
- or
-`singularity run --bind /path/to/data/:/data/ preprocess.sif -i /data/raw/ -o /data/preprocessed/` (with Singularity)
-
-The `-v` (Docker) or `--bind` (Singularity) option mounts a volume from the host to the container; `/path/to/data/` must be the path to the directory containing the dataset you want to preprocess (for example `/data/lmslsc21/training/`) so that it becomes available in the container.
-The `preprocessed/` directory will be created (`/path/to/data/preprocessed/`) and contain the preprocessed data with the same structure as the raw data (described above).
-
-### In a python environment
-
-#### Installation
-
- 1. Download the Anima Binaries [from the download page](https://anima.irisa.fr/downloads/)
- 2. Clone the [Anima Scripts Public repository](https://github.com/Inria-Visages/Anima-Scripts-Public)
- 3. Clone the [Anima Scripts Public Data repository](https://github.com/Inria-Visages/Anima-Scripts-Data-Public/) containing the template used for the brain extraction
- 4. Create the `~/.anima/config.txt` file to configure anima (or copy it ), containing the following paths:
- 
-
-```
-# Variable names and section titles should stay the same
-# Put this file in your HomeFolder/.anima/config.txt
-# Make the anima variable point to your Anima public build
-# Make the extra-data-root point to the data folder of Anima-Scripts
-# The last folder separator for each path is crucial, do not forget them
-# Use full paths, nothing relative or using tildes 
-
-[anima-scripts]
-anima-scripts-public-root = /path/to/Anima-Scripts-Public/
-anima = /path/to/Anima-Binaries/
-extra-data-root = /path/to/Anima-Scripts-Data-Public/
-```
-#### Execution
-
-
-```
-preprocess.py [-h] -i INPUT -o OUTPUT [-a ANIMA]
-                     [-s ANIMA_SCRIPTS_PUBLIC]
-
-Preprocess data for the Longitudinal MS Lesion Segmentation Challenge of
-MICCAI 2021 with the anima library. The preprocessing consists in a brain
-extraction followed by a bias field correction.
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -i INPUT, --input INPUT
-                        Input folder containing the patients to preprocess
-                        (for example
-                        segmentation_challenge_miccai21/training/).
-  -o OUTPUT, --output OUTPUT
-                        Output folder where the processed data will be saved
-                        (it will follow the same file structure as the input
-                        folder).
-  -a ANIMA, --anima ANIMA
-                        The directory containing the anima binaries (optional,
-                        the script will look for this information in the
-                        ~/.anima/config.txt file by default).
-  -s ANIMA_SCRIPTS_PUBLIC, --anima_scripts_public ANIMA_SCRIPTS_PUBLIC
-                        The directory containing the anima scripts public root
-                        (optional, the script will look for this information
-                        in the ~/.anima/config.txt file by default).
-```
+Instructions to preprocess the data with anima are in PREPROCESS.md.

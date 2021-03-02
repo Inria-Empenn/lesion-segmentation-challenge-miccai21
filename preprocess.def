@@ -3,8 +3,6 @@ From: python:slim-buster
 
 %files
     config.txt /root/.anima/
-    preprocess.py /anima/
-    animaAtlasBasedBrainExtraction.py /anima/
 
 %post
     apt-get update -y
@@ -16,8 +14,7 @@ From: python:slim-buster
     git lfs install
     git clone --depth 1 https://github.com/Inria-Visages/Anima-Scripts-Public.git
     git clone --depth 1 https://github.com/Inria-Visages/Anima-Scripts-Data-Public.git
-    cp /anima/animaAtlasBasedBrainExtraction.py /anima/Anima-Scripts-Public/brain_extraction/
 
 
 %runscript
-    python preprocess.py $@
+    python /anima/Anima-Scripts-Public/ms_lesion_semgentation/animaLongitudinalPreprocessing.py $@
