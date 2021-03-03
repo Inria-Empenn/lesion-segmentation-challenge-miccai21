@@ -128,7 +128,6 @@ optional arguments:
   -h, --help            show this help message and exit
   -t TEMPLATE, --template TEMPLATE
                         Path to the template image used to normalize intensities (optional, skip normalization if not given).
-
 ```
 
 For example:
