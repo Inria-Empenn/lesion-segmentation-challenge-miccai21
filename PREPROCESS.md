@@ -2,9 +2,10 @@
 
 Data preprocessing for the Longitudinal Multipel Sclerosis Lesion Segmentation Challenge of MICCAI 2021.
 
-The preprocessing consists in three steps:
+The preprocessing consists in three or four steps:
  - brain extraction
  - bias correction
+ - (optional) normalization with the given template
  - crop from the union of brain masks of both time points
 
 The script is part of [Anima-Scripts-Public](https://github.com/Inria-Visages/Anima-Scripts-Public), it can be found here: `Anima-Scripts-Public/ms_lesion_segmentation/animaLongitudinalPreprocessing.py`.
