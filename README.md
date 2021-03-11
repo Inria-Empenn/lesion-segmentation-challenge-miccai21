@@ -41,4 +41,4 @@ where:
  - `ground_truth_expertN.nii.gz` (where N goes from 1 to 4) are the original segmentations of each experts,
  - and `ground_truth.nii.gz` is the consensus.
 
-Instructions to preprocess the data with anima are in PREPROCESS.md.
+Instructions to preprocess the data with anima can be found in [the dedicated repository](https://gitlab.inria.fr/amasson/lesion-segmentation-challenge-miccai21/).

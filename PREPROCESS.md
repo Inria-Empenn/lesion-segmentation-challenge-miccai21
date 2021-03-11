@@ -6,13 +6,14 @@ The preprocessing consists in three or four steps:
  - brain extraction
  - bias correction
  - (optional) normalization with the given template
- - crop from the union of brain masks of both time points
+ - mask flair images with the union of the masks of both time points
+ - reorient the images in axial direction
 
-The script is part of [Anima-Scripts-Public](https://github.com/Inria-Visages/Anima-Scripts-Public), it can be found here: `Anima-Scripts-Public/ms_lesion_segmentation/animaLongitudinalPreprocessing.py`.
+The script is part of [Anima-Scripts-Public](https://github.com/Inria-Visages/Anima-Scripts-Public), it can be found here: `Anima-Scripts-Public/ms_lesion_segmentation/animaMSLongitudinalPreprocessing.py`.
 
 ## Usage
 
-Run `python animaLongitudinalPreprocessing.py -i /path/to/data/raw/ -o /path/to/data/preprocessed/` either with Docker, Singularity or Python (see instructions bellow).
+Run `python animaMSLongitudinalPreprocessing.py -i /path/to/data/raw/ -o /path/to/data/preprocessed/` either with Docker, Singularity or Python (see instructions bellow).
 
 The `/path/to/data/raw/` directory corresponds to the training or the testing set of the challenge, and must follow this structure:
 
@@ -133,3 +134,5 @@ optional arguments:
 For example:
 
 `python ~/Anima-Scripts-Public/ms_lesion_segmentation/animaLongitudinalPreprocessing.py -i ./training/ -t /path/to/template.nii.gz -o ./preprocessed/`
+
+docker run -v /home/amasson/data/:/data/ -v /home/amasson/Anima-Scripts-Data-Public/ms-study-atlas/FLAIR/:/template/ preprocess_lmslsc21:1.0 -i /data/raw/ -t /template/FLAIR_1.nrrd -o /data/preprocessed/
