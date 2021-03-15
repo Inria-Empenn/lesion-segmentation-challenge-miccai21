@@ -8,6 +8,7 @@ From: python:slim-buster
     apt-get update -y
     apt-get install -y --no-install-recommends apt-utils ca-certificates wget unzip git git-lfs
     update-ca-certificates
+    mkdir /anima/
     cd /anima/
     wget -q https://github.com/Inria-Visages/Anima-Public/releases/download/v4.0.1/Anima-Ubuntu-4.0.1.zip
     unzip Anima-Ubuntu-4.0.1.zip
@@ -17,4 +18,4 @@ From: python:slim-buster
 
 
 %runscript
-    python /anima/Anima-Scripts-Public/ms_lesion_semgentation/animaLongitudinalPreprocessing.py $@
+    python /anima/Anima-Scripts-Public/ms_lesion_segmentation/animaMSLongitudinalPreprocessing.py $@

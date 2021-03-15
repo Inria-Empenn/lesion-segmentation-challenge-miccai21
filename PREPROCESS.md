@@ -57,7 +57,9 @@ Run the image:
  or
 `singularity run --bind /path/to/data/:/data/ preprocess.sif -i /data/raw/ -o /data/preprocessed/` (with Singularity)
 
-The `-v` (Docker) or `--bind` (Singularity) option mounts a volume from the host to the container; `/path/to/data/` must be the path to the directory containing the dataset you want to preprocess (for example `./training/`) so that it becomes available in the container.
+The `-v` (Docker) or `--bind` (Singularity) option mounts a volume from the host into the container; `/path/to/data/` must be the path to the directory containing the dataset you want to preprocess (for example `./training/`) so that it becomes available in the container.
+
+**Note:** you must have read and write access to the data directory in order to mount it.
 
 If you want to normalize intensities, the template image must be accessible from the container. You can simply mount another volume containing the template file:
 

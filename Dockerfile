@@ -16,4 +16,4 @@ COPY config.txt /root/.anima
 
 RUN mkdir /data/
 
-ENTRYPOINT ["python", "/anima/Anima-Scripts-Public/ms_lesion_semgentation/animaLongitudinalPreprocessing.py"]
+ENTRYPOINT ["python", "/anima/Anima-Scripts-Public/ms_lesion_segmentation/animaMSLongitudinalPreprocessing.py"]
