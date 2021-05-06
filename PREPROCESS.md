@@ -73,6 +73,8 @@ where `/path/to/template/` contains the `template.nii.gz` you want to use for th
 
 #### Installation
 
+*Requirement:* You need [Git LFS](https://git-lfs.github.com/) to clone the *Anima Scripts Public Data* repository with the real data (otherwise the large files will be replaced by tiny pointer files). So install Git LFS if you have not already, and run `git lfs install` before cloning anima repositories. Then, larges files from the repositories will be properly downloaded.
+
  1. Download the Anima Binaries [from the download page](https://anima.irisa.fr/downloads/)
  2. Clone the [Anima Scripts Public repository](https://github.com/Inria-Visages/Anima-Scripts-Public)
  3. Clone the [Anima Scripts Public Data repository](https://github.com/Inria-Visages/Anima-Scripts-Data-Public/) containing the template used for the brain extraction
