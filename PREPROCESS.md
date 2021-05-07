@@ -98,7 +98,7 @@ extra-data-root = /path/to/Anima-Scripts-Data-Public/
 #### Execution
 
 ```
-usage: animaLongitudinalPreprocessing.py [-h] -i INPUT -o OUTPUT [-t TEMPLATE]
+usage: animaMSLongitudinalPreprocessing.py [-h] -i INPUT -o OUTPUT [-t TEMPLATE]
 
 Preprocess data for the Longitudinal MS Lesion Segmentation Challenge of MICCAI 2021 with the anima library. 
                     The preprocessing consists in a brain extraction followed by a bias field correction.
@@ -136,6 +136,6 @@ optional arguments:
 
 For example:
 
-`python ~/Anima-Scripts-Public/ms_lesion_segmentation/animaLongitudinalPreprocessing.py -i ./training/ -t /path/to/template.nii.gz -o ./preprocessed/`
+`python ~/Anima-Scripts-Public/ms_lesion_segmentation/animaMSLongitudinalPreprocessing.py -i ./training/ -t /path/to/template.nii.gz -o ./preprocessed/`
 
 docker run -v /home/amasson/data/:/data/ -v /home/amasson/Anima-Scripts-Data-Public/ms-study-atlas/FLAIR/:/template/ preprocess_lmslsc21:1.0 -i /data/raw/ -t /template/FLAIR_1.nrrd -o /data/preprocessed/
