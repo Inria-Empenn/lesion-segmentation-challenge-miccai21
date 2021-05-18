@@ -1,1 +1,0 @@
-python process.py -d /path/to/data/folder/ -t1 flair_time01.nii.gz -t2 flair_time02.nii.gz -o output_segmentation.nii.gz

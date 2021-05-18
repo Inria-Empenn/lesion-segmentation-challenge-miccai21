@@ -59,7 +59,7 @@ The URL of your image will be given in the Boutiques descriptor as described bel
 
 The Boutiques descriptor is a json file describing how to execute your method.
 
-The simplest way to create it is to copy the example descriptor `example_method/msseg-example-method.json` from this repository, and replace the fields "name", "description", "author", "command-line" and "container-image" with the appropriate information.
+The simplest way to create it is to copy the example descriptor `example_method/msseg_example_method_cpu.json` from this repository, and replace the fields "name", "description", "author", "command-line" and "container-image" with the appropriate information.
 
 The "command-line" field should reflect the command you use to execute your method, with the two input names `[FLAIR1]` and `[FLAIR2]` the output image `[SEGMENTATION]`, as follow:
 

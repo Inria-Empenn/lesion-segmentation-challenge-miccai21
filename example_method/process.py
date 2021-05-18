@@ -28,11 +28,11 @@ input_folder.mkdir(exist_ok=True, parents=True)
 input_file = input_folder / flair_time01.name.replace('.nii.gz', '_0000.nii.gz')
 shutil.copy(flair_time01, input_file)
 
-output_folder = Path.cwd() / 'output'
+output_folder = data_folder / 'output'
 output_folder.mkdir(exist_ok=True)
 
 call(['nnUNet_predict', '-i', str(input_folder), '-o', str(output_folder), '-t', '100', '-m', '3d_fullres', '-tr', 'nnUNetTrainerV2', '-f', '0'])
 
 output_nnunet = output_folder / flair_time01.name
 
-output_nnunet.rename(Path.cwd() / output)
+shutil.move(output_nnunet, output)

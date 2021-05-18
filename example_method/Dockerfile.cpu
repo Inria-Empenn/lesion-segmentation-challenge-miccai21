@@ -5,7 +5,9 @@ RUN update-ca-certificates
 
 WORKDIR /nnunet
 
-RUN pip install nnunet
+RUN git clone --single-branch -b cpu --depth 1 https://gitlab.inria.fr/amasson/nnunet.git
+RUN pip install -e nnunet/
+
 COPY setup.sh /nnunet
 COPY FlairMSSegModel.zip /nnunet
 
@@ -18,3 +20,5 @@ ENV nnUNet_preprocessed=/nnunet/data/input/nnUNet_preprocessed
 ENV RESULTS_FOLDER=/nnunet/data/output/
 
 RUN nnUNet_install_pretrained_model_from_zip FlairMSSegModel.zip
+
+COPY process.py /nnunet/
