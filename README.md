@@ -6,4 +6,4 @@ This repository contains instructions and scripts for the *Longitudinal Multiple
 
 The `preprocess/` directory contains information to preprocess the data.
 
-`SUBMISSION_GUIDELINES.md` explains how to submit your method on the [VIP platform](https://www.creatis.insa-lyon.fr/vip/).
+Instructions to submit your method on [the VIP platform](https://www.creatis.insa-lyon.fr/vip/) will be added soon.
