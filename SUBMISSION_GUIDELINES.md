@@ -2,19 +2,17 @@
 
 *Note: those guidelines might change slightly in the near future, you will be noticed by email when the final version is completed.*
 
-Methods will be evaluated on the [Virtual Imaging Platform (VIP)](https://www.creatis.insa-lyon.fr/), which is a web portal for medical simulation and image data analysis.
+Methods will be evaluated on the [Virtual Imaging Platform (VIP)](https://vip.creatis.insa-lyon.fr/), which is a web portal for medical simulation and image data analysis.
 
 To publish your method on VIP, you need to perform the following steps:
 
 1. build a Docker or Singularity image containing your method,
-1. publish your image on [Dockerhub](https://hub.docker.com/) as a public or private image (if this is not possible, contact VIP admins at vip-support@creatis.insa-lyon.fr),
 1. create a [Boutiques](https://boutiques.github.io/) descriptor of your tool,
-1. (optional) publish your descriptor,
-1. send your descriptor to the [VIP team](vip-support@creatis.insa-lyon.fr).
+1. make your image and descriptor available to the [VIP team](mailto:vip-support@creatis.insa-lyon.fr).
 
 Your method will then be imported on the VIP platform by VIP admins, and you will be able to test it with some example data available on the platform.
 
-Practically, your method should process one patient at a time. It should take two FLAIR images as inputs (the time points of the patient), and output one semgentation image (a binary mask equal to 1 where there is a new MS lesion and 0 elsewere). Input and output names must be explicit in the command-line, as in the following example command:
+Practically, your method should process one patient at a time. It should take two FLAIR images as inputs (the time points of the patient), and output one segmentation image (a binary mask equal to 1 where there is a new MS lesion and 0 elsewere). Input and output names must be explicit in the command-line, as in the following example:
 
 `method -t1 flair_time01.nii.gz -t2 flair_time02.nii.gz -o output_segmentation.nii.gz`
 
@@ -45,9 +43,9 @@ Here are the VIP guidelines for Docker images:
 
 Follow [the Docker instructions](https://docs.docker.com/get-started/04_sharing_app/) or [the Singularity instructions](https://sylabs.io/guides/3.7/user-guide/endpoint.html) to publish your method somewhere accessible to the VIP platform. 
 
-You are free to publish your image in a private or public repository. If you publish it in a private repository, you will have to [contact the VIP team](vip-support@creatis.insa-lyon.fr) to provide them the authentication information to download the image.
+You are free to publish your image in a private or public repository. If you publish it in a private repository, you will have to [contact the VIP team](mailto:vip-support@creatis.insa-lyon.fr) to provide them the authentication information to download the image.
 
-Alternatively, you can [contact the VIP team](vip-support@creatis.insa-lyon.fr) and ask to send your image via sftp.
+Alternatively, you can [contact the VIP team](mailto:vip-support@creatis.insa-lyon.fr) and ask to send your image via sftp.
 
 The URL of your image will be given in the Boutiques descriptor as described bellow. The VIP platform will read this URL from the descriptor to download your image.
 
@@ -91,7 +89,7 @@ Boutiques will automatically and transparently download and execute the image co
 
 ## Send your descriptor to the VIP team
 
-Once you have built your image and your Boutiques descriptor is ready, you can send it via email to the VIP team at vip-support@creatis.insa-lyon.fr (just join the json file and explain that you would like to add your method to VIP for the MSSeg challenge). Once the VIP team has installed your method on the platform, you will be able to execute it on the example data for testing purposes through [the VIP interface](https://vip.creatis.insa-lyon.fr/).
+Once you have built your image and your Boutiques descriptor is ready, you can send it via email to the VIP team at [vip-support@creatis.insa-lyon.fr](mailto:vip-support@creatis.insa-lyon.fr) (just join the json file and explain that you would like to add your method to VIP for the MSSeg challenge). Once the VIP team has installed your method on the platform, you will be able to execute it on the example data for testing purposes through [the VIP interface](https://vip.creatis.insa-lyon.fr/).
 You will have to carefully validate the results obtained on VIP with the testing data and report to the VIP team if you encounter any issues. 
 
 That's it! You have successfully submitted your method to the MSSeg Challenge.
