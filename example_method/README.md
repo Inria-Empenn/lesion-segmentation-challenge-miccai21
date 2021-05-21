@@ -24,4 +24,4 @@ To build the CPU version, run `docker build -f Dockerfile.cpu -t YOUR-USER-NAME/
 
 - Change the paths in `example_invocation.json` to reflect your data paths
 - Find the tool to get its zenodo.ID: `bosh search MSSeg`
-- Execute the tool: `bosh exec launch -v /path/to/data/:/path/to/data/ zenodo.4769886 example_invocation.json`
+- Execute the tool: `bosh exec launch -v /path/to/data/:/path/to/data/ zenodo.4769886 example_invocation.json`, the -v option enables to mount a volume in the container.
