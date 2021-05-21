@@ -1,5 +1,5 @@
 {
-    "name": "MSSeg Example Method GPU",
+    "name": "MSSeg_Example_Method_GPU",
     "description": "Detect new MS lesions from two FLAIR images.",
     "author": "Arthur Masson",
     "tool-version": "v0.1.3",
@@ -33,7 +33,7 @@
             "id": "output_segmentation",
             "name": "The output segmentation path (e.g. segmentation.nii.gz)",
             "optional": false,
-            "type": "File",
+            "type": "String",
             "value-key": "[SEGMENTATION]"
         }
     ],
@@ -49,16 +49,5 @@
         "purpose": "test MSSeg example method",
         "status": "example"
     },
-    "suggested-resources": {
-        "cpu-cores": 1,
-        "ram": 1,
-        "walltime-estimate": 60
-    },
-    "error-codes": [
-        {
-            "code": 1,
-            "description": "Crashed"
-        }
-    ],
-    "doi": "10.5281/zenodo.4769886"
+    "doi": "10.5281/zenodo.4778224"
 }
