@@ -1,0 +1,5 @@
+{
+    "flair_time01": "/path/to/data/flair_time01.nii.gz",
+    "flair_time02": "/path/to/data/flair_time02.nii.gz",
+    "output_segmentation": "/path/to/data/output_segmentation.nii.gz"
+}
