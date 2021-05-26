@@ -1,7 +1,5 @@
 # Submit a method for the MSSeg Challenge
 
-*Note: those guidelines might change slightly in the near future, you will be noticed by email when the final version is completed.*
-
 Methods will be evaluated on the [Virtual Imaging Platform (VIP)](https://vip.creatis.insa-lyon.fr/), which is a web portal for medical simulation and image data analysis.
 
 To publish your method on VIP, you need to perform the following steps:

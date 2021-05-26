@@ -1,9 +1,11 @@
 # Install, publish and use the example method
 
+*Note: Those instructions are only provided as an example to help you submit your method. Please read the [submission guidelines](SUBMISSION_GUIDELINES.md) first.*
+
 ## Build the Docker image
 
-To build the GPU version, run `docker build -f Dockerfile.gpu -t YOUR-USER-NAME/msseg-gpu-example .`
-To build the CPU version, run `docker build -f Dockerfile.cpu -t YOUR-USER-NAME/msseg-cpu-example .`
+- To build the GPU version, run `docker build -f Dockerfile.gpu -t YOUR-USER-NAME/msseg-gpu-example .`
+- To build the CPU version, run `docker build -f Dockerfile.cpu -t YOUR-USER-NAME/msseg-cpu-example .`
 
 ## Run the Docker image
 
@@ -16,6 +18,7 @@ To build the CPU version, run `docker build -f Dockerfile.cpu -t YOUR-USER-NAME/
 
 ## Publish the Boutiques descriptor
 
+- Install [Boutiques](https://boutiques.github.io/).
 - Create an account on Zenodo, the publishing platform used by Boutiques. 
 - Create a new personal access token on the [applications page](https://zenodo.org/account/settings/applications/) of your Zenodo account so that bosh can publish descriptors under your name.
 - Publish the descriptor with your personal access token: `bosh publish --zenodo-token ACCESS_TOKEN msseg_example_method_cpu.json`
