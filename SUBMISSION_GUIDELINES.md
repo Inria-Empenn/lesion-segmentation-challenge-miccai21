@@ -76,6 +76,14 @@ For more information about [Boutiques](https://boutiques.github.io/) you can fol
 
 If you decide to install Boutiques, you can verify that your descriptor is valid with the following command: `bosh validate your-method-descriptor.json`.
 
+## Send your descriptor to the VIP team
+
+Once you have built your image and your Boutiques descriptor is ready, you can send it via email to the VIP team at [vip-support@creatis.insa-lyon.fr](mailto:vip-support@creatis.insa-lyon.fr) (just join the json file and explain that you would like to add your method to VIP for the MSSeg challenge). Once the VIP team has installed your method on the platform, you will be able to execute it on the example data for testing purposes through [the VIP interface](https://vip.creatis.insa-lyon.fr/).
+You will have to carefully validate the results obtained on VIP with the testing data and report to the VIP team if you encounter any issues. 
+
+That's it! You have successfully submitted your method to the MSSeg Challenge.
+Once all methods have been evaluation on all 60 patients of the test dataset, results will be published in a dedicated publication.
+
 ## (Optional) Publish your descriptor
 
 You can publish your descriptor on [Zenodo](https://zenodo.org/) and make your method available to others by following [the Boutiques tutorial](https://nbviewer.jupyter.org/github/boutiques/tutorial/blob/master/notebooks/boutiques-tutorial.ipynb).
@@ -91,11 +99,3 @@ Once published, the tools are easily accessible using the following Boutiques co
 -`bosh exec launch -s zenodoID example_invocation.json` to execute the tool with the arguments described in the `example_invocation.json` file.
 
 Boutiques will automatically and transparently download and execute the image containing the tools, making them easy to use anywhere.
-
-## Send your descriptor to the VIP team
-
-Once you have built your image and your Boutiques descriptor is ready, you can send it via email to the VIP team at [vip-support@creatis.insa-lyon.fr](mailto:vip-support@creatis.insa-lyon.fr) (just join the json file and explain that you would like to add your method to VIP for the MSSeg challenge). Once the VIP team has installed your method on the platform, you will be able to execute it on the example data for testing purposes through [the VIP interface](https://vip.creatis.insa-lyon.fr/).
-You will have to carefully validate the results obtained on VIP with the testing data and report to the VIP team if you encounter any issues. 
-
-That's it! You have successfully submitted your method to the MSSeg Challenge.
-Once all methods have been evaluation on all 60 patients of the test dataset, results will be published in a dedicated publication.
