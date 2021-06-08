@@ -58,6 +58,8 @@ The Boutiques descriptor is a json file describing how to execute your method.
 
 The simplest way to create it is to copy the example descriptor `example_method/msseg_example_method_cpu.json` from this repository, and replace the fields "name", "description", "author", "command-line" and "container-image" with the appropriate information. Again, use a precise version number for the image tag ; not `latest`.
 
+**Note: the name must not contain any space (use underscores instead).**
+
 The "command-line" field should reflect the command you use to execute your method, with the two input names `[FLAIR1]` and `[FLAIR2]` the output image `[SEGMENTATION]`, as follows:
 
 `"command-line": "python process.py -t1 [FLAIR1] -t2 [FLAIR2] -o [SEGMENTATION]"`
@@ -84,12 +86,11 @@ You will have to carefully validate the results obtained on VIP with the testing
 That's it! You have successfully submitted your method to the MSSeg Challenge.
 Once all methods have been evaluation on all 60 patients of the test dataset, results will be published in a dedicated publication.
 
-## (Optional) Publish your descriptor
+## (Optional) Ask the VIP team to publish your descriptor
 
-You can publish your descriptor on [Zenodo](https://zenodo.org/) and make your method available to others by following [the Boutiques tutorial](https://nbviewer.jupyter.org/github/boutiques/tutorial/blob/master/notebooks/boutiques-tutorial.ipynb).
-Nevertheless, we advise you to validate the descriptor with the VIP team before publishing it on Zenodo. This is because we may need to modify it and Zenodo does not allow for the update of existing files. You will thus have to create a new file or a new version of the existing one. 
+Once your method is integrated in VIP, you can ask the VIP team to publish the descriptor on [Zenodo](https://zenodo.org/). This will make your method available to others, as described on [the Boutiques tutorial](https://nbviewer.jupyter.org/github/boutiques/tutorial/blob/master/notebooks/boutiques-tutorial.ipynb).
 
-Alternatively, once your method is integrated in VIP, you can ask the VIP team to publish the descriptor for you if your prefer.
+Please do not upload your descriptor yourself before the VIP team as it will generate a DOI which would be incompatible with the VIP platform.
 
 Of course, this step is optional and you can decide not to publish your tool at all.
 
