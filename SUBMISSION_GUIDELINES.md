@@ -22,7 +22,7 @@ You must provide a built image containing your method. Please refer to the [Dock
 
 Ultimately, your method will be executed on the VIP platform with an automatically generated command of the following kind:
 
-`docker run --entrypoint=/bin/sh --rm  -v /path/to/working/directory:/path/to/working/directory -w /path/to/working/directory dockerid/method-name:latest command-line.sh`
+`docker run --entrypoint=/bin/sh --rm  -v /path/to/working/directory:/path/to/working/directory -w /path/to/working/directory dockerid/method-name:v1.0.0 command-line.sh`
 
 VIP will provide the input data for your method (the two FLAIR images) in the working directory of your container.  Your method should thus look for inputs in the working directory and generate the segmentation file at the same location.
 
@@ -30,21 +30,23 @@ The `command-line.sh` file will also be automatically generated to call your met
 
 Here are the VIP guidelines for Docker images:
 
-    - For efficient management of containers in VIP, we recommend that containers use the following images if possible:
-        - Linux distribution: [centos7](https://hub.docker.com/r/_/centos/) (official).
-        - Compiled Matlab applications: [viplatform/matlab-compiler-runtime](https://hub.docker.com/r/viplatform/matlab-compiler-runtime) (unofficial).
-        - Applications using MRtrix3: [glatard/mrtrix3](https://hub.docker.com/r/glatard/mrtrix3/) (unofficial).
-    - Compiled applications: avoid using architecture-specific compilation flags as it will produce non-portable code (Illegal instruction error messages).
-    - Your application is supposed to work with a regular user (not as root).
+- For efficient management of containers in VIP, we recommend that containers use the following images if possible:
+   - Linux distribution: [centos7](https://hub.docker.com/r/_/centos/) (official).
+   - Compiled Matlab applications: [viplatform/matlab-compiler-runtime](https://hub.docker.com/r/viplatform/matlab-compiler-runtime) (unofficial).
+   - Applications using MRtrix3: [glatard/mrtrix3](https://hub.docker.com/r/glatard/mrtrix3/) (unofficial).
+- Compiled applications: avoid using architecture-specific compilation flags as it will produce non-portable code (Illegal instruction error messages).
+- Your application is supposed to work with a regular user (not as root).
 
 In addition to these guidelines, please note that VIP has mainly access to 'standard' shared compute resources, with limited numbers of cores and RAM. Your method should not automatically make use of all available CPUs, but allow for the turning ON/OFF of the parallelisation (e.g., with a flag). 
 Moreover, whenever possible, please provide a CPU implementation of your method since we may not have access to GPUs in due time for the integration of your application.
+
+For reproducibility concerns, do not rely on the automatically-created `latest` tag for your Docker image. Instead, tag it with a precise version number which you will use in the Boutiques descriptor.
 
 ## Publish your image (or transfer it to VIP via sftp)
 
 Follow [the Docker instructions](https://docs.docker.com/get-started/04_sharing_app/) or [the Singularity instructions](https://sylabs.io/guides/3.7/user-guide/endpoint.html) to publish your method somewhere accessible to the VIP platform. 
 
-We encourage you to publish your image in a public repository, but you can also use a private one if you prefer. If you publish it in a private repository, you will have to [contact the VIP team](mailto:vip-support@creatis.insa-lyon.fr) to provide them the authentication information to download the image.
+We encourage you to publish your image in a public repository (tagged with a version number), but you can also use a private one if you prefer. If you publish it in a private repository, you will have to [contact the VIP team](mailto:vip-support@creatis.insa-lyon.fr) to provide them the authentication information to download the image.
 
 Alternatively, you can [contact the VIP team](mailto:vip-support@creatis.insa-lyon.fr) and ask to send your image via sftp.
 
@@ -54,7 +56,7 @@ The URL of your image will be given in the Boutiques descriptor as described bel
 
 The Boutiques descriptor is a json file describing how to execute your method.
 
-The simplest way to create it is to copy the example descriptor `example_method/msseg_example_method_cpu.json` from this repository, and replace the fields "name", "description", "author", "command-line" and "container-image" with the appropriate information.
+The simplest way to create it is to copy the example descriptor `example_method/msseg_example_method_cpu.json` from this repository, and replace the fields "name", "description", "author", "command-line" and "container-image" with the appropriate information. Again, use a precise version number for the image tag ; not `latest`.
 
 The "command-line" field should reflect the command you use to execute your method, with the two input names `[FLAIR1]` and `[FLAIR2]` the output image `[SEGMENTATION]`, as follows:
 
