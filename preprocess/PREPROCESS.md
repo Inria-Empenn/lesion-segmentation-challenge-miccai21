@@ -57,7 +57,15 @@ Run the image:
  or
 `singularity run --bind /path/to/data/:/data/ preprocess.sif -i /data/raw/ -o /data/preprocessed/` (with Singularity)
 
-The `-v` (Docker) or `--bind` (Singularity) option mounts a volume from the host into the container; `/path/to/data/` must be the path to the directory containing the dataset you want to preprocess (for example `./training/`) so that it becomes available in the container.
+The `-v` (Docker) or `--bind` (Singularity) option mounts a volume from the host into the container; `/path/to/data/` must be the path to the directory containing the dataset you want to preprocess so that it becomes available in the container.
+
+In the above command, the `/path/to/data/` directory must contain the `raw/` directory with all patients in it (called `LongitudinalMultipleSclerosisLesionSegmentationChallengeMiccai21/training/` the zip archive) and the process will create the `preprocessed/` directory containing the preprocessed data.
+
+You could also choose to mount two volumes, one for the input and another for the output as in the following example :
+
+`docker run -v /path/to/input/:/input/ -v /path/to/output/:/output/ preprocess_lmslsc21:1.0 -i /input/ -o /output/`
+
+In any case, the output folder must be mounted otherwise it will be deleted when the container stops.
 
 **Note:** you must have read and write access to the data directory in order to mount it.
 
