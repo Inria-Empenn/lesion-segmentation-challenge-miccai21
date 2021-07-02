@@ -22,7 +22,7 @@ Your method will be executed with a command of the following kind:
 
 `docker run --entrypoint=/bin/sh --rm -v /path/to/working/directory:/path/to/working/directory -w /path/to/working/directory dockerid/method-name:v1.0.0 command-line.sh`
 
-The `-w`argument will override any `WORKDIR` statement in the dockerfile.
+The `-w` argument will override any `WORKDIR` statement in the dockerfile.
 
 ### Where should I read the input images in my container?
 
