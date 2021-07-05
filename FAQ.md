@@ -8,11 +8,15 @@
 
 The [submission guidelines](https://gitlab.inria.fr/amasson/lesion-segmentation-challenge-miccai21/-/blob/master/SUBMISSION_GUIDELINES.md) contain all information to submit a method. 
 
-Do not hesitate to ask any question at challenges-iam-request@inria.fr if anything is unclear.
+Do not hesitate to ask any question at challenges-iam@inria.fr if anything is unclear.
 
 ### Can I have an example dockerfile or an example method?
 
 There is an example method with a [dockerfile](https://gitlab.inria.fr/amasson/lesion-segmentation-challenge-miccai21/-/blob/master/example_method/Dockerfile.cpu) in the [example_method](https://gitlab.inria.fr/amasson/lesion-segmentation-challenge-miccai21/-/tree/master/example_method) of the [lesion-segmentation-challenge-miccai21](https://gitlab.inria.fr/amasson/lesion-segmentation-challenge-miccai21/) repository.
+
+### How to solve "file not found error"?
+
+Please see next answer.
 
 ### How to define the current directory?
 
@@ -61,4 +65,4 @@ You should not need worry about the path to the images, VIP will make them acces
 
 ### How can I find some help?
 
-Do not hesitate to ask any question at challenges-iam-request@inria.fr if anything is unclear.
+Do not hesitate to ask any question at challenges-iam@inria.fr if anything is unclear.

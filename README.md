@@ -6,6 +6,8 @@ This repository contains instructions and scripts for the *Longitudinal Multiple
 
 `SUBMISSION_GUIDELINES.md` explains how to submit your method on the [VIP platform](https://www.creatis.insa-lyon.fr/vip/).
 
+`FAQ.md` answers commonly asked questions.
+
 The `preprocess/` directory contains information to preprocess the data.
 
 The `example_method/` directory contains an example MS lesion segmentation method which follows the challenge scheme.
