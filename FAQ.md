@@ -24,6 +24,8 @@ Your method will be executed with a command of the following kind:
 
 The `-w` argument will override any `WORKDIR` statement in the dockerfile.
 
+The path to the working directory (`/path/to/working/directory`) is automatically set by Boutiques, and we have no control over it ; so you should not rely on it.
+
 ### How to solve "file not found error"?
 
 See answer above *"How to define the current directory?"*.
