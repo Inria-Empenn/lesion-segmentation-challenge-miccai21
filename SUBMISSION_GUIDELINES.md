@@ -28,6 +28,10 @@ VIP will provide the input data for your method (the two FLAIR images) in the wo
 
 The `command-line.sh` file will also be automatically generated to call your method with one patient of the test data of the challenge ; it will contain something like `method -t1 flair_time01_025.nii.gz -t2 flair_time02_025.nii.gz -o segmentation_025.nii.gz`.
 
+*Note: as your container will be executed with the `-w` argument to define the working directory, do not rely on a working directory defined by a `WORKDIR` statement during the execution of your method (try to avoid using `WORKDIR` if possible, although it could be used for installation purposes if necessary).*
+
+Please refer to the example method to better understand how files and execution will be managed on the VIP platform.
+
 Here are the VIP guidelines for Docker images:
 
 - For efficient management of containers in VIP, we recommend that containers use the following images if possible:

@@ -16,7 +16,7 @@ There is an example method with a [dockerfile](https://gitlab.inria.fr/amasson/l
 
 ### How to define the current directory?
 
-The current directory will be set by the VIP platform when executing your method, so any working directory defined in the dockerfile will be overriden by the execution command. Thus you should not rely on a working directory during the execution of your method.
+The current directory will be set by the VIP platform when executing your method, so any working directory defined in the dockerfile will be overriden by the execution command. Thus you should not rely on a working directory defined by a `WORKDIR` statement during the execution of your method (try to avoid using `WORKDIR` if possible, although it could be used for installation purposes if necessary).
 
 Your method will be executed with a command of the following kind:
 
@@ -64,7 +64,7 @@ In the example method, the last statement copies the `process.py` script into th
 
 `COPY process.py /nnunet/`
 
-And the command-line defined in the descriptor contains the full path to the script: 
+And the command line defined in the descriptor contains the full path to the script: 
 
 `python /nnunet/process.py -t1 [FLAIR1] -t2 [FLAIR2] -o [SEGMENTATION]`.
 

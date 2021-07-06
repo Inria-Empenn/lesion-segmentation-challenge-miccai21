@@ -1,3 +1,6 @@
 *.sif
 *.zip
 example_method/example_invocation_niseko.json
+example_method/flair_time01.nii.gz
+example_method/flair_time02.nii.gz
+example_method/output_segmentation.nii.gz
