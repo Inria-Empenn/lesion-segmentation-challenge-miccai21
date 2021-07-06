@@ -58,7 +58,7 @@ This will result in the following call:
 Thus, the `process.py` file will be found, because it is on the execution directory. Everything looks fine when you test the method from this `/home/username/method/` directory.
 But the `process.py` file will not be present in the execution directory on the VIP platform.
 
-**Instead the process.py file must be included in the image**
+**Instead the process.py file must be included in the image.**
 
 In the example method, the last statement copies the `process.py` script into the `/nnunet/`:
 
