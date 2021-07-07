@@ -107,6 +107,37 @@ Your script will be called as in the following example:
 
 You should not need worry about the path to the images, VIP will make them accessible to your method.
 
+### How can I include the provided preprocessing scripts in my image?
+
+You can easily get the anima tools required to preprocess your data in your image by copying lines 3 to 17 at the beginning of the dockerfile of your image (after the FROM statement):
+
+```
+[...] # FROM statement of your image, something like "FROM python:slim-buster"
+
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils ca-certificates wget unzip git git-lfs
+RUN update-ca-certificates
+
+WORKDIR /anima/
+
+RUN wget -q https://github.com/Inria-Visages/Anima-Public/releases/download/v4.0.1/Anima-Ubuntu-4.0.1.zip
+RUN unzip Anima-Ubuntu-4.0.1.zip
+RUN git lfs install
+RUN git clone --depth 1 https://github.com/Inria-Visages/Anima-Scripts-Public.git
+RUN git clone --depth 1 https://github.com/Inria-Visages/Anima-Scripts-Data-Public.git
+RUN mkdir /root/.anima/
+
+COPY config.txt /root/.anima
+
+RUN mkdir /data/
+
+[...] # The rest of your dockerfile
+
+```
+
+You will need to copy the [`config.txt`](https://gitlab.inria.fr/amasson/lesion-segmentation-challenge-miccai21/-/blob/master/preprocess/config.txt) in the directory where you build your image.
+
+This will allow you to run the anima preprocessing script `/anima/Anima-Scripts-Public/ms_lesion_segmentation/animaMSLongitudinalPreprocessing.py` in your image (from the scripts of your method).
+
 ### How can I find some help?
 
 Do not hesitate to ask any question at challenges-iam@inria.fr if anything is unclear.
